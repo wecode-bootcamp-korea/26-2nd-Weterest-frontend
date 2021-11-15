@@ -24,9 +24,9 @@ const Upload = () => {
     formData.append('description', intro);
     formData.append('source', renderUrl);
 
-    fetch(`${API.baseUrl}`, {
+    fetch(`${API.upload}`, {
       method: 'POST',
-      headers: { Authorization: localStorage.getItem('token') },
+      headers: { Authorization: localStorage.getItem('back_token') },
       body: formData,
     })
       .then(res => res.json())
