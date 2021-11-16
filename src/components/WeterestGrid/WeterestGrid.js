@@ -1,6 +1,6 @@
 import React from 'react';
-import GridInner from './GridInner';
 import styled from 'styled-components';
+import GridInner from './GridInner';
 
 const WeterestGrid = ({ pins, heights }) => {
   return (

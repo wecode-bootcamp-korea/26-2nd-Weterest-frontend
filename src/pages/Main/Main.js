@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
-import WeterestGrid from '../../components/WeterestGrid/WeterestGrid';
 import styled from 'styled-components';
+import WeterestGrid from '../../components/WeterestGrid/WeterestGrid';
 import { POST_STYLE_DATA } from '../../styles/StyleData';
 
 const Main = () => {
