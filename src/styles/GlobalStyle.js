@@ -16,6 +16,8 @@ const GlobalStyle = createGlobalStyle`
 
   body {
     font-family: 'Noto Sans KR', Arial, Helvetica, sans-serif;
+    font-weight: 400;
+    font-size:30px;
   }
 `;
 

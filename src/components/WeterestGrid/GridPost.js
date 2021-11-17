@@ -90,7 +90,6 @@ const PinSave = styled.div`
   padding: 20px 20px 20px 20px;
   background-color: red;
   border-radius: 30px;
-  font-family: 'Noto Sans KR', Arial, Helvetica, sans-serif;
   font-size: 15px;
   font-weight: 700;
   color: white;
