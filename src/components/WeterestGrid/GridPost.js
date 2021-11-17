@@ -25,7 +25,7 @@ const GridPost = ({ pins, heights }) => {
 
         return (
           <Post
-            key={pin.id}
+            key={pin.index}
             style={{
               height: `${heights[index]}px`,
               transform: `translateX(${
@@ -42,10 +42,10 @@ const GridPost = ({ pins, heights }) => {
                     </Icons>
                     <IconsOverlay />
                   </IconsGroup>
-                  <Image src={pin.image_url} />
+                  <Image src={pin.board_image_url} alt={pin.source} />
                   <ImageSkeleton
                     style={{
-                      backgroundColor: `${pin.color}`,
+                      backgroundColor: `${pin.image_point_color}`,
                       height: `${heights[index] - 24}px`,
                     }}
                   />
