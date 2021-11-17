@@ -1,28 +1,30 @@
 import React from 'react';
 import styled from 'styled-components';
+import WeterestGrid from '../../components/WeterestGrid/WeterestGrid';
 import { useState, useEffect } from 'react';
-import UserSearch from './UserSearch';
 
 const Main = () => {
-  const [query, setQuery] = useState(null);
-  const [pageNumber, setPageNumber] = useState(1);
+  const [pins, setPins] = useState(null);
+  const [heights, setHeights] = useState(null);
 
-  UserSearch(query, pageNumber);
+  const calculateHeight = pin => {
+    return Math.floor((pin.image_height * 252) / pin.image_width);
+  };
 
-  function handleSearch(e) {
-    setQuery(e.target.value);
-    setPageNumber(1);
-  }
+  useEffect(() => {
+    fetch('/data/main/mainMockUp.json')
+      .then(res => res.json())
+      .then(data => {
+        setPins(data.results);
+        setHeights(data.results.map(pin => calculateHeight(pin)));
+      });
+  }, []);
 
   return (
     <MainContainer>
-      <input type="text" onChange={handleSearch} />
-      <HomeFeed>hi</HomeFeed>
-      <div>title</div>
-      <div>title</div>
-      <div>title</div>
-      <div>loading...</div>
-      <div>error...</div>
+      <HomeFeed>
+        {pins && heights && <WeterestGrid pins={pins} heights={heights} />}
+      </HomeFeed>
     </MainContainer>
   );
 };
