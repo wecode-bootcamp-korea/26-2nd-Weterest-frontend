@@ -1,4 +1,5 @@
 export const POST_STYLE_DATA = {
+  HEIGHT_GAP: 0,
   POST_WIDTH: 252,
   COLUMN_COUNT: 5,
 };

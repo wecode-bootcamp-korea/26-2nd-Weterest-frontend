@@ -1,29 +1,20 @@
-import React, { useState, useEffect } from 'react';
+import React, { useEffect } from 'react';
+import { useLocation } from 'react-router-dom';
 import styled from 'styled-components';
 import WeterestGrid from '../../components/WeterestGrid/WeterestGrid';
-import { POST_STYLE_DATA } from '../../styles/StyleData';
+import { MockUp } from '../../Config';
 
 const Main = () => {
-  const [pins, setPins] = useState(null);
-  const [heights, setHeights] = useState(null);
-
-  const calculateHeight = pin => {
-    return Math.floor((pin.height * POST_STYLE_DATA.POST_WIDTH) / pin.width);
-  };
+  const location = useLocation();
 
   useEffect(() => {
-    fetch('/data/main/mainMockUp.json')
-      .then(res => res.json())
-      .then(data => {
-        setPins(data.results);
-        setHeights(data.results.map(pin => calculateHeight(pin)));
-      });
-  }, []);
+    window.scrollTo(0, 0);
+  }, [location]);
 
   return (
     <MainContainer>
       <HomeFeed>
-        {pins && heights && <WeterestGrid pins={pins} heights={heights} />}
+        <WeterestGrid url={MockUp.main} />
       </HomeFeed>
     </MainContainer>
   );
@@ -32,11 +23,12 @@ const Main = () => {
 const MainContainer = styled.main`
   position: relative;
   top: 100px;
-  height: 100%;
 `;
 
 const HomeFeed = styled.article`
+  position: relative;
   padding-bottom: 24px;
+  background-color: 'red';
 `;
 
 export default Main;

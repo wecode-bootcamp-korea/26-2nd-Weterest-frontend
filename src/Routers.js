@@ -16,7 +16,7 @@ const Routers = () => {
         <Route path="/main" element={<Main />} />
         <Route path="/upload" element={<Upload />} />
         <Route path="/myPage" element={<MyPage />} />
-        <Route path="/detail" element={<Detail />} />
+        <Route path="/detail/:id" element={<Detail />} />
       </Routes>
     </BrowserRouter>
   );
