@@ -5,7 +5,7 @@ import UserProfileCircle from './DetailComment/CommentComps/UserProfileCircle';
 const FeaturedUser = ({ profile }) => {
   return (
     <UserInfo>
-      <div class="usserMiniInfo">
+      <div className="userMiniInfo">
         <UserCard>
           <UserProfileCircle imgUrl={profile} />
           <UserSum>
