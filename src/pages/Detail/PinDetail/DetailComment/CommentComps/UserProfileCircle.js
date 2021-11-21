@@ -1,21 +1,54 @@
 import React from 'react';
 import styled from 'styled-components';
 
-const UserProfileCircle = ({ imgUrl }) => {
+const UserProfileCircle = ({ username, imgUrl }) => {
+  const colorList = [
+    '#66C4FF',
+    '#F966FF',
+    '#E91C11',
+    '#66C4FF',
+    '#F966FF',
+    '#9E9E9E',
+    '#10162F',
+    '#008A27',
+    '#5533FF',
+  ];
+
+  const pickRandomColor = list => {
+    return list[Math.floor(Math.random() * list.length)];
+  };
+
   return (
-    <ProfileWrap>
-      <UserProfile src={imgUrl} />
+    <ProfileWrap pickRandomColor={pickRandomColor(colorList)}>
+      {imgUrl ? (
+        <UserProfile src={imgUrl} />
+      ) : (
+        <Username>{username.slice(0, 1)}</Username>
+      )}
     </ProfileWrap>
   );
 };
 
 export default UserProfileCircle;
 
-const ProfileWrap = styled.div`
+const Username = styled.div`
+  font-size: 2rem;
+  margin-top: -0.2rem;
+  font-weight: 200;
+  color: ${props => props.theme.white};
+  opacity: 0.75;
+`;
+
+const ProfileWrap = styled.div.attrs(props => ({
+  pickRandomColor: props.pickRandomColor,
+}))`
+  display: flex;
+  align-items: center;
+  justify-content: center;
   width: 50px;
   height: 50px;
   border-radius: 50%;
-  background-color: purple;
+  background-color: ${props => props.pickRandomColor};
   overflow: hidden;
 `;
 

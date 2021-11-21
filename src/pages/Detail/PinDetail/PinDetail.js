@@ -2,35 +2,35 @@ import React from 'react';
 import styled from 'styled-components';
 import FeaturedUser from './DetailFeaturedUser';
 import DetailComment from './DetailComment/DetailComment';
-import SavePinIcon from '../../../components/SavePinIcon';
-import { MdOutlineIosShare, MdMoreHoriz } from 'react-icons/md';
+import MoreAndShareIcons from '../../../components/Icons/MoreAndShareIcons';
+import SavePinIcon from '../../../components/Icons/SavePinIcon';
 
 const PinDetail = ({ pin }) => {
+  const heightList = [300, 400, 500, 600];
+
+  const pickRandomHeight = list => {
+    return list[Math.floor(Math.random() * list.length)];
+  };
+
   return (
     <PinCard onClick={e => e.stopPropagation()}>
       <PinWrap>
-        <Pin>
-          <Image src={pin.board_image_url} />
+        <Pin pickRandomHeight={pickRandomHeight(heightList)}>
+          <Image src={pin.board_info.board_image_url} />
         </Pin>
       </PinWrap>
       <PinInfoWrap>
         <ActionBar>
-          <ActionIcons>
-            <span className="WesterIcon more">
-              <MdMoreHoriz />
-            </span>
-            <span className="WesterIcon share">
-              <MdOutlineIosShare />
-            </span>
-          </ActionIcons>
-          <SavePinIcon />
+          <MoreAndShareIcons />
+          <SavePinIcon pinId={pin.board_info.id} />
         </ActionBar>
         <PinInfo>
-          <Source>{pin.source}</Source>
-          <Title>{pin.title}</Title>
-          <Description>{pin.description}</Description>
-          <FeaturedUser profile={pin.profile_image_url} />
-          <DetailComment />
+          <Source>{pin.board_info.source}</Source>
+          <Title>{pin.board_info.title}</Title>
+          <Description>{pin.board_info.description}</Description>
+          <FeaturedUser username={pin.board_info.username} />
+
+          <DetailComment comments={pin.comments} />
         </PinInfo>
       </PinInfoWrap>
     </PinCard>
@@ -52,51 +52,42 @@ const PinCard = styled.div`
   cursor: default;
 `;
 
-const PinWrap = styled.div``;
-
-const Pin = styled.div`
+const PinWrap = styled.div`
   height: auto;
-  border-radius: 32px;
-  overflow: hidden;
 `;
 
-const PinInfoWrap = styled.div`
-  width: 500px;
-  padding-top: 18px;
+const Pin = styled.div.attrs(props => ({
+  pickRandomHeight: props.pickRandomHeight,
+}))`
+  position: relative;
+  border-radius: 32px;
+  overflow: hidden;
+  height: ${props => props.pickRandomHeight}px;
 `;
 
 const Image = styled.img`
-  position: relative;
-  width: 100%;
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  height: 100%;
 `;
 
+const PinInfoWrap = styled.div`
+  position: relative;
+  width: 500px;
+  padding-top: 18px;
+`;
 const ActionBar = styled.div`
   display: grid;
   grid-template-columns: 1fr auto;
   align-items: center;
   position: sticky;
-  top: 0px;
+  top: 80px;
   width: 480px;
   padding-left: 20px;
   border-bottom-right-radius: 30px;
   background-color: white;
   z-index: 4;
-`;
-
-const ActionIcons = styled.div`
-  padding-left: 12px;
-  font-size: 2rem;
-
-  .WesterIcon {
-    display: inline-block;
-    cursor: pointer;
-  }
-
-  span + span::before {
-    content: '';
-    padding-left: 12px;
-    cursor: default;
-  }
 `;
 
 const PinInfo = styled.div`
@@ -109,8 +100,9 @@ const Source = styled.span`
 
 const Title = styled.h2`
   margin-top: 10px;
-  font-weight: 700;
   font-size: 2rem;
+  font-weight: 700;
+  line-height: 1.2;
 `;
 
 const Description = styled.div`

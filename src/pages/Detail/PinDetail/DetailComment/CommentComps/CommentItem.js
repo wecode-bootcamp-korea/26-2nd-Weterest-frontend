@@ -8,19 +8,17 @@ import {
   MdChatBubble,
 } from 'react-icons/md';
 
-const CommentItem = () => {
+const CommentItem = ({ comment }) => {
   return (
     <Comments>
-      <UserProfileCircle imgUrl="/images/image_a1.jpeg" />
+      <UserProfileCircle username={comment.username} imgUrl="" />
       <TextBox>
         <TextBubble>
           <div className="infos">
-            <span className="username"> Danny </span>
-            <span className="date"> 11yr </span>
+            <span className="username"> {comment.username} </span>
+            <span className="date"> {comment.create_at.slice(0, 10)} </span>
           </div>
-          <div className="text">
-            Hmm the pastels seem more spring to me, cuz easter
-          </div>
+          <div className="text">{comment.description}</div>
         </TextBubble>
         <Icons>
           <span className="WesterIcon favorite">

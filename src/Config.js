@@ -8,8 +8,9 @@ export const API = {
 };
 
 export const MockUp = {
-  main: '/data/main/mainMockUp.json',
-  detail: '/data/main/detailMockUp.json',
+  main: '/data/mockUp/main.json',
+  search: '/data/mockUp/main.json',
+  detail: '/data/mockUp/detail.json',
   token:
     'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpZCI6NX0.jugJgM3JP9XFInnwQJbQt02wCRW_aUnWnv5HWNC0X_g',
 };
