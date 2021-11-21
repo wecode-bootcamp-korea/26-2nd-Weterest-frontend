@@ -2,8 +2,8 @@ import React from 'react';
 import styled from 'styled-components';
 import FeaturedUser from './DetailFeaturedUser';
 import DetailComment from './DetailComment/DetailComment';
-import SavePinIcon from '../../../components/SavePinIcon';
-import { MdOutlineIosShare, MdMoreHoriz } from 'react-icons/md';
+import MoreAndShareIcons from '../../../components/Icons/MoreAndShareIcons';
+import SavePinIcon from '../../../components/Icons/SavePinIcon';
 
 const PinDetail = ({ pin }) => {
   return (
@@ -15,14 +15,7 @@ const PinDetail = ({ pin }) => {
       </PinWrap>
       <PinInfoWrap>
         <ActionBar>
-          <ActionIcons>
-            <span className="WesterIcon more">
-              <MdMoreHoriz />
-            </span>
-            <span className="WesterIcon share">
-              <MdOutlineIosShare />
-            </span>
-          </ActionIcons>
+          <MoreAndShareIcons />
           <SavePinIcon />
         </ActionBar>
         <PinInfo>
@@ -61,6 +54,7 @@ const Pin = styled.div`
 `;
 
 const PinInfoWrap = styled.div`
+  position: relative;
   width: 500px;
   padding-top: 18px;
 `;
@@ -75,28 +69,12 @@ const ActionBar = styled.div`
   grid-template-columns: 1fr auto;
   align-items: center;
   position: sticky;
-  top: 0px;
+  top: 80px;
   width: 480px;
   padding-left: 20px;
   border-bottom-right-radius: 30px;
   background-color: white;
   z-index: 4;
-`;
-
-const ActionIcons = styled.div`
-  padding-left: 12px;
-  font-size: 2rem;
-
-  .WesterIcon {
-    display: inline-block;
-    cursor: pointer;
-  }
-
-  span + span::before {
-    content: '';
-    padding-left: 12px;
-    cursor: default;
-  }
 `;
 
 const PinInfo = styled.div`
