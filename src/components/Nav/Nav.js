@@ -5,10 +5,11 @@ import { MdSearch, MdMessage, MdLogout } from 'react-icons/md';
 import { CgProfile } from 'react-icons/cg';
 import styled from 'styled-components';
 
+const buttonStyle = { color: 'grey', width: '24px', height: '24px' };
+const edgeButtonStyle = { width: '20px', height: '20px' };
+
 const Nav = () => {
   const navigate = useNavigate();
-  const buttonStyle = { color: 'grey', width: '24px', height: '24px' };
-  const edgeButtonStyle = { width: '20px', height: '20px' };
 
   return (
     <Navigator>
