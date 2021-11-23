@@ -4,30 +4,32 @@ import styled from 'styled-components';
 import WeterestGrid from '../../components/WeterestGrid/WeterestGrid';
 import { API } from '../../Config';
 
-const Main = () => {
+const Search = () => {
   const location = useLocation();
 
   useEffect(() => {
     window.scrollTo(0, 0);
   }, [location]);
-
   return (
-    <MainContainer>
-      <HomeFeed>
-        <WeterestGrid url={`${API.main}`} />
-      </HomeFeed>
-    </MainContainer>
+    <SearchContainer>
+      <SearchFeed>
+        <WeterestGrid
+          url={`${API.main}`}
+          query={'&' + location.search.slice(1)}
+        />
+      </SearchFeed>
+    </SearchContainer>
   );
 };
 
-const MainContainer = styled.main`
+const SearchContainer = styled.main`
   position: relative;
   top: 100px;
 `;
 
-const HomeFeed = styled.article`
+const SearchFeed = styled.article`
   position: relative;
   padding-bottom: 24px;
 `;
 
-export default Main;
+export default Search;

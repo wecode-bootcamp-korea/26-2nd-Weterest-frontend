@@ -4,9 +4,9 @@ import GridPost from './GridPost/GridPost';
 import useScrollFetch from '../../components/fetch/useScrollFetch';
 import FetchInform from '../../components/fetch/FetchInform';
 
-const WeterestGrid = ({ url }) => {
+const WeterestGrid = ({ url, query }) => {
   const [page, setPage] = useState(0);
-  const { pins, loading, error } = useScrollFetch(url, page);
+  const { pins, loading, error } = useScrollFetch(url, page, query);
   const gridLoader = useRef(null);
   const handleObserver = useCallback(entries => {
     const target = entries[0];

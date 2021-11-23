@@ -51,11 +51,11 @@ const GridPost = ({ pins }) => {
                       <MoreAndShareIconsPosition>
                         <MoreAndShareIcons />
                       </MoreAndShareIconsPosition>
-                      <Source>{trimText(pin.source)}</Source>
+                      <Source>{trimText(pin.user)}</Source>
                     </Icons>
                     <IconsOverlay />
                   </IconsGroup>
-                  <Image src={pin.board_image_url} />
+                  <Image src={pin.image_url} />
                   <ImageSkeleton backgroundColor={pin.image_point_color} />
                 </ContentInner>
               </Content>
