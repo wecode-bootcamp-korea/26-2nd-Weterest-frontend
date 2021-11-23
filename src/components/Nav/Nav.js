@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { FaPinterest, FaBell, FaPlus, FaQuestion } from 'react-icons/fa';
 import { MdSearch, MdMessage, MdLogout } from 'react-icons/md';
@@ -9,7 +9,17 @@ const buttonStyle = { color: 'grey', width: '24px', height: '24px' };
 const edgeButtonStyle = { width: '20px', height: '20px' };
 
 const Nav = () => {
+  const [keyword, setKeyword] = useState('');
+
   const navigate = useNavigate();
+
+  const goToSearchPage = e => {
+    if (e.key === 'Enter' && keyword) {
+      navigate(`/search?keyword=${keyword}`);
+      e.target.value = '';
+      window.location.reload(false);
+    }
+  };
 
   return (
     <Navigator>
@@ -19,7 +29,12 @@ const Nav = () => {
       <Home onClick={() => navigate('/main')}>홈</Home>
       <SearchBoxContainer>
         <MdSearch style={buttonStyle} />
-        <Search placeholder=" 검색" />
+        <Search
+          onChange={e => setKeyword(e.target.value)}
+          onKeyPress={goToSearchPage}
+          type="text"
+          placeholder=" 검색"
+        />
       </SearchBoxContainer>
       <RightIcon>
         <Icon>

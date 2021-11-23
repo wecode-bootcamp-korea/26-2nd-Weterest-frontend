@@ -31,8 +31,12 @@ const Upload = () => {
     })
       .then(res => res.json())
       .then(res => {
-        if (res.message === 'SUCCESS') {
+        if (res.message === 'CREATE_SUCCESS') {
           alert('마이페이지에 핀이 추가되었습니다.');
+          setImgFile(null);
+          setTitle('');
+          setIntro('');
+          setRenderUrl('');
         } else {
           alert('제목 혹은 이미지를 확인해주세요.');
         }
