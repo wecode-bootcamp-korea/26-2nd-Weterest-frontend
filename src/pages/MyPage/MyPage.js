@@ -99,8 +99,9 @@ const GrayButton = styled.button`
 
 const MyPageGridContainer = styled.main`
   position: relative;
-  top: 100px;
-  height: 100%;
+  top: 60px;
+  /* height: 100%; */
+  padding-bottom: 20px;
 `;
 
 const GirdTitle = styled.div`
@@ -112,7 +113,7 @@ const GirdTitle = styled.div`
 
 const GirdFeed = styled.article`
   position: relative;
-  padding-bottom: 24px;
+  margin-bottom: 44px;
 `;
 
 export default Mypage;

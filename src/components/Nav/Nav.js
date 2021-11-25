@@ -2,7 +2,6 @@ import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { FaPinterest, FaBell, FaPlus, FaQuestion } from 'react-icons/fa';
 import { MdSearch, MdMessage, MdLogout } from 'react-icons/md';
-import { CgProfile } from 'react-icons/cg';
 import styled from 'styled-components';
 
 const buttonStyle = { color: 'grey', width: '24px', height: '24px' };
@@ -54,9 +53,9 @@ const Nav = () => {
         <Icon>
           <MdMessage style={buttonStyle} />
         </Icon>
-        <Icon onClick={() => navigate('/mypage')}>
-          <CgProfile style={buttonStyle} />
-        </Icon>
+        <Myprofile onClick={() => navigate('/mypage')}>
+          <ProfileImg alt="myprofile" src="/images/myprofile.jpeg" />
+        </Myprofile>
         <Icon onClick={handleKakaoLogout}>
           <MdLogout style={buttonStyle} />
         </Icon>
@@ -141,6 +140,28 @@ const Icon = styled.div`
   :hover {
     background-color: #e2e2e2;
   }
+`;
+
+const Myprofile = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  border: none;
+  background-color: white;
+  overflow: hidden;
+  cursor: pointer;
+  :hover {
+    background-color: #e2e2e2;
+  }
+`;
+
+const ProfileImg = styled.img`
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
 `;
 
 const Edge = styled.div`

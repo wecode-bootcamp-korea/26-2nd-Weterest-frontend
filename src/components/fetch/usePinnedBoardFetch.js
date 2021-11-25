@@ -38,13 +38,18 @@ const usePinnedBoardFetch = url => {
     })
       .then(res => res.json())
       .then(pinsData => {
-        setPins(prevPins => {
-          if (prevPins === []) {
-            return giveRandomHeight(pinsData.pined_boards);
-          } else {
-            return [...prevPins, ...giveRandomHeight(pinsData.pined_boards)];
-          }
-        });
+        if (pinsData.message === 'No Pin') {
+          setPins([]);
+        } else {
+          setPins(prevPins => {
+            if (prevPins === []) {
+              return giveRandomHeight(pinsData.pined_boards);
+            } else {
+              return [...prevPins, ...giveRandomHeight(pinsData.pined_boards)];
+            }
+          });
+        }
+
         setLoading(false);
       })
       .catch(error => {
