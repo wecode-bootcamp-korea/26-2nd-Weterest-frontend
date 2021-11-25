@@ -90,14 +90,21 @@ const Upload = () => {
               <Title
                 onChange={e => setTitle(e.target.value)}
                 placeholder="제목 추가"
+                value={title}
               />
+              <User>
+                <Myprofile alt="myprofile" src="images/myprofile.jpeg" />
+                <UserName>창민 전</UserName>
+              </User>
               <Intro
                 onChange={e => setIntro(e.target.value)}
                 placeholder="사람들에게 회원님의 핀에 대해 설명해 보세요"
+                value={intro}
               />
               <Landing
                 onChange={e => setRenderUrl(e.target.value)}
                 placeholder="랜딩 페이지 링크 추가"
+                value={renderUrl}
               />
             </RightMid>
           </Mid>
@@ -235,8 +242,6 @@ const RightMid = styled.div`
   position: relative;
   display: flex;
   flex-direction: column;
-  justify-content: center;
-  align-items: center;
   width: 420px;
   height: 510px;
   padding: 0 20px;
@@ -255,9 +260,29 @@ const Title = styled.input`
   font-weight: 600;
 `;
 
+const User = styled.div`
+  position: absolute;
+  display: flex;
+  align-items: center;
+  top: 30%;
+  width: 388px;
+  height: 48px;
+`;
+
+const Myprofile = styled.img`
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+`;
+
+const UserName = styled.div`
+  padding: 10px;
+  font-size: 14px;
+`;
+
 const Intro = styled.input`
   position: absolute;
-  top: 40%;
+  top: 45%;
   width: 380px;
   height: 25px;
   padding-bottom: 5px;

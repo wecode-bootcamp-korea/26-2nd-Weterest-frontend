@@ -3,6 +3,7 @@ import styled from 'styled-components';
 import MyImageGridPost from './GridPost/MyImageGirdPost';
 import useMyImageFetch from '../fetch/useMyImageFetch';
 import FetchInform from '../fetch/FetchInform';
+import IntroPost from './GridPost/IntroPost';
 
 const MyImageGrid = ({ url }) => {
   const { pins, loading, error } = useMyImageFetch(url);
@@ -10,7 +11,11 @@ const MyImageGrid = ({ url }) => {
   return (
     <Grid>
       {pins && <MyImageGridPost pins={pins} />}
-
+      {pins.length === 0 ? (
+        <IntroPost text="당신의 사진을 공유해주세요" linkTo="/upload" />
+      ) : (
+        ''
+      )}
       {loading && <FetchInform message="그리드 로딩 중" />}
       {error && <FetchInform message="에러" />}
     </Grid>
@@ -26,5 +31,4 @@ const Grid = styled.div`
   margin-right: auto;
   margin-left: auto;
 `;
-
 export default MyImageGrid;

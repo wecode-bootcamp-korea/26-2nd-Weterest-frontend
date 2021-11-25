@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import styled, { keyframes } from 'styled-components';
+import styled from 'styled-components';
 import Circle from './Circle';
 
 const LoginIntroduce = () => {
@@ -52,19 +52,6 @@ const TEXTS = [
 const TEXTS_COLOR = ['red', 'blue', 'pink', 'orange'];
 
 const ORDER = [0, 1, 2, 3];
-
-const bounce = keyframes`
-  0% {
-    transform: scale(1)
-  }
-  50% {
-    transform: scale(0)
-  }
-  100% {
-    transform: scale(1)
-  }
-`;
-
 const Introduce = styled.div`
   padding-top: 50px;
   text-align: center;
@@ -84,7 +71,6 @@ const Text = styled.div`
   color: ${props => props.textsColor};
   font-size: 60px;
   text-align: center;
-  animation: ${bounce} 2s infinite;
 `;
 
 const Circles = styled.div`

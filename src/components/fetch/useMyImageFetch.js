@@ -22,13 +22,18 @@ const useWeGridFetchNoRandom = url => {
     })
       .then(res => res.json())
       .then(pinsData => {
-        setPins(prevPins => {
-          if (prevPins === []) {
-            return pinsData.message;
-          } else {
-            return [...prevPins, ...pinsData.message];
-          }
-        });
+        if (pinsData.message === 'DOSE_NOT_EXIST_CREATE_BOARD') {
+          setPins([]);
+        } else {
+          setPins(prevPins => {
+            if (prevPins === []) {
+              return pinsData.message;
+            } else {
+              return [...prevPins, ...pinsData.message];
+            }
+          });
+        }
+
         setLoading(false);
       })
       .catch(error => {
