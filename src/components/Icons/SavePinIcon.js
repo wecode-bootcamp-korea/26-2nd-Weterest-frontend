@@ -1,11 +1,26 @@
 import React, { useState } from 'react';
 import styled from 'styled-components';
+import { API } from '../../Config';
 
-const SavePinIcon = () => {
+const SavePinIcon = ({ pinId }) => {
   const [isSave, setIsSave] = useState(false);
 
-  const savePin = () => {
+  const savePin = e => {
+    e.stopPropagation();
     setIsSave(!isSave);
+
+    fetch(API.pin, {
+      method: 'POST',
+      headers: { Authorization: API.token },
+      body: JSON.stringify({
+        board_id: pinId,
+      }),
+    })
+      .then(res => res.json())
+      .then(result => {
+        if (result.message === 'CREATE_SUCCESS') alert('핀이 저장되었습니다!');
+        if (result.message === 'NO_CONTENTS') alert('핀이 삭제되었습니다!');
+      });
   };
 
   return <Save onClick={savePin}>{isSave ? '저장됨' : '저장'}</Save>;

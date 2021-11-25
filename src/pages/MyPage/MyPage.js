@@ -1,24 +1,13 @@
 import React, { useState, useEffect } from 'react';
-import WeterestGrid from '../../components/WeterestGrid/WeterestGrid';
+import PinnedBoardGrid from '../../components/Grids/PinnedBoardGrid';
+import MyImageGrid from '../../components/Grids/MyImageGrid';
 import styled from 'styled-components';
-import { POST_STYLE_DATA } from '../../styles/StyleData';
+import { API } from '../../Config';
 
 const Mypage = () => {
-  const [pins, setPins] = useState(null);
-  const [heights, setHeights] = useState(null);
   const [userInfo, setUserInfo] = useState({});
 
-  const calculateHeight = pin => {
-    return Math.floor((pin.height * POST_STYLE_DATA.POST_WIDTH) / pin.width);
-  };
-
   useEffect(() => {
-    fetch('/data/main/mainMockUp.json')
-      .then(res => res.json())
-      .then(data => {
-        setPins(data.results);
-        setHeights(data.results.map(pin => calculateHeight(pin)));
-      });
     fetch('/data/mypageinfo.json')
       .then(res => res.json())
       .then(data => {
@@ -49,9 +38,14 @@ const Mypage = () => {
         )}
       </MyPageInfo>
       <MyPageGridContainer>
-        <HomeFeed>
-          {pins && heights && <WeterestGrid pins={pins} heights={heights} />}
-        </HomeFeed>
+        <GirdTitle>내가 업로드한 이미지</GirdTitle>
+        <GirdFeed>
+          <MyImageGrid url={API.getMyImage} />
+        </GirdFeed>
+        <GirdTitle>모든 핀</GirdTitle>
+        <GirdFeed>
+          <PinnedBoardGrid url={API.getMyPin} />
+        </GirdFeed>
       </MyPageGridContainer>
     </>
   );
@@ -109,7 +103,15 @@ const MyPageGridContainer = styled.main`
   height: 100%;
 `;
 
-const HomeFeed = styled.article`
+const GirdTitle = styled.div`
+  width: 1260px;
+  margin: 0 auto 1rem auto;
+  font-size: 1.25rem;
+  font-weight: 700;
+`;
+
+const GirdFeed = styled.article`
+  position: relative;
   padding-bottom: 24px;
 `;
 

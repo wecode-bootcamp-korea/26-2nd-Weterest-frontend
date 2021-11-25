@@ -9,16 +9,17 @@ const GridPost = ({ pins }) => {
   const navigate = useNavigate();
 
   const goToDetail = pinId => {
-    navigate(`/detail/${pinId}`);
+    navigate(`/boards/${pinId}`);
   };
 
   const trimText = text => {
-    const maxTextLength = 12;
+    const maxTextLength = 10;
     if (text.length >= maxTextLength)
       return `${text.slice(0, maxTextLength)}...`;
 
     return text;
   };
+
   const calculateHeight = pin => {
     return Math.floor(
       (pin.image_height * POST_STYLE_DATA.POST_WIDTH) / pin.image_width
@@ -51,12 +52,12 @@ const GridPost = ({ pins }) => {
                       <MoreAndShareIconsPosition>
                         <MoreAndShareIcons />
                       </MoreAndShareIconsPosition>
-                      <Source>{trimText(pin.user)}</Source>
+                      <Source>{pin.title && trimText(pin.title)}</Source>
                     </Icons>
                     <IconsOverlay />
                   </IconsGroup>
                   <Image src={pin.image_url} />
-                  <ImageSkeleton backgroundColor={pin.image_point_color} />
+                  <ImageSkeleton backgroundColor={pin.point_color} />
                 </ContentInner>
               </Content>
             </PostInner>
@@ -150,7 +151,7 @@ const Source = styled.div`
 
 const IconsOverlay = styled.div`
   height: 100%;
-  width: 100%;
+
   background-color: ${props => props.theme.black};
   opacity: 0.3;
 `;
@@ -182,8 +183,9 @@ const ContentInner = styled.div`
 `;
 
 const Image = styled.img`
-  position: relative;
-  width: 100%;
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
   height: 100%;
   z-index: 2;
 `;

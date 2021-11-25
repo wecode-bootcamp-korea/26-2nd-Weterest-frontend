@@ -2,14 +2,14 @@ import React from 'react';
 import styled from 'styled-components';
 import UserProfileCircle from './DetailComment/CommentComps/UserProfileCircle';
 
-const FeaturedUser = ({ profile }) => {
+const FeaturedUser = ({ username }) => {
   return (
     <UserInfo>
       <div className="userMiniInfo">
         <UserCard>
-          <UserProfileCircle imgUrl={profile} />
+          <UserProfileCircle username={username} imgUrl="" />
           <UserSum>
-            <span className="name">Weterest</span>
+            <span className="name">{username}</span>
             <br />
             <span className="folloers">4천 만</span>
           </UserSum>

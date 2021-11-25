@@ -1,8 +1,8 @@
 import React, { useRef, useState, useEffect, useCallback } from 'react';
 import styled from 'styled-components';
 import GridPost from './GridPost/GridPost';
-import useScrollFetch from '../../components/fetch/useScrollFetch';
-import FetchInform from '../../components/fetch/FetchInform';
+import useScrollFetch from '../fetch/useScrollFetch';
+import FetchInform from '../fetch/FetchInform';
 
 const WeterestGrid = ({ url, query }) => {
   const [page, setPage] = useState(0);
@@ -30,7 +30,7 @@ const WeterestGrid = ({ url, query }) => {
       <Grid>
         {pins && <GridPost pins={pins} />}
         {loading && <FetchInform message="그리드 로딩 중" />}
-        {error && <FetchInform message="에러!" />}
+        {error && <FetchInform message="에러" />}
       </Grid>
       <LoaderBox windowHeight={document.body.scrollHeight} ref={gridLoader} />
     </>

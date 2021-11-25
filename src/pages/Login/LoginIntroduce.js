@@ -4,18 +4,19 @@ import Circle from './Circle';
 
 const LoginIntroduce = () => {
   const [order, setOrder] = useState(0);
-  const changeOrderNumber = () => {
-    if (order === TEXTS.length - 1) {
-      clearTimeout(changeOrderNumber);
-      setOrder(0);
-      return;
-    }
-    setOrder(order + 1);
-  };
 
   useEffect(() => {
+    const changeOrderNumber = () => {
+      if (order === TEXTS.length - 1) {
+        clearTimeout(changeOrderNumber);
+        setOrder(0);
+        return;
+      }
+      setOrder(order + 1);
+    };
     setTimeout(changeOrderNumber, 2000);
   }, [order]);
+
   return (
     <Introduce>
       <Next>다음</Next>
