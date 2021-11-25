@@ -2,10 +2,8 @@ import { useState, useEffect } from 'react';
 import { useLocation } from 'react-router-dom';
 import { API } from '../../Config';
 
-const LIMIT = 10;
-
 const giveRandomHeight = pins => {
-  const result = pins.message.map(pin => {
+  const result = pins.map(pin => {
     pin.image_height += randomHeight();
     return pin;
   });
@@ -20,7 +18,7 @@ const randomHeight = () => {
   return newHeight;
 };
 
-const useScrollFetch = (url, page, query) => {
+const usePinnedBoardFetch = url => {
   const [pins, setPins] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(false);
@@ -31,23 +29,20 @@ const useScrollFetch = (url, page, query) => {
   }, [location.pathname]);
 
   useEffect(() => {
-    infiniteScroll(page, url, query);
-  }, [page, url, query]);
+    weGridFetch(url);
+  }, [url]);
 
-  const infiniteScroll = (page, url, query) => {
-    const pagenation = `?limit=${LIMIT}&offset=${LIMIT * page}`;
-    const isQuery = query === undefined;
-
-    fetch(url + pagenation + `${isQuery ? '' : query}`, {
+  const weGridFetch = url => {
+    fetch(url, {
       headers: { Authorization: API.token },
     })
       .then(res => res.json())
       .then(pinsData => {
         setPins(prevPins => {
           if (prevPins === []) {
-            return giveRandomHeight(pinsData);
+            return giveRandomHeight(pinsData.pined_boards);
           } else {
-            return [...prevPins, ...giveRandomHeight(pinsData)];
+            return [...prevPins, ...giveRandomHeight(pinsData.pined_boards)];
           }
         });
         setLoading(false);
@@ -60,4 +55,4 @@ const useScrollFetch = (url, page, query) => {
   return { pins, loading, error };
 };
 
-export default useScrollFetch;
+export default usePinnedBoardFetch;

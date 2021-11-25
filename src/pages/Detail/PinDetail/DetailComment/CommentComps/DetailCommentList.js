@@ -3,9 +3,17 @@ import styled from 'styled-components';
 import CommentFirstMent from './CommentFirstMent';
 import CommentItem from './CommentItem';
 
-const DetailCommentList = () => {
+const DetailCommentList = ({ comments }) => {
   return (
-    <CommentList>{true ? <CommentItem /> : <CommentFirstMent />}</CommentList>
+    <CommentList>
+      {comments ? (
+        comments.map(comment => (
+          <CommentItem key={comment.id} comment={comment} />
+        ))
+      ) : (
+        <CommentFirstMent />
+      )}
+    </CommentList>
   );
 };
 

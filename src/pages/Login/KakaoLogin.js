@@ -4,19 +4,20 @@ import { REDIRECT_URI } from './OAuth';
 import { API } from '../../Config';
 
 const KakaoLogin = () => {
-  let navigate = useNavigate();
-  const bodyData = {
-    grant_type: 'authorization_code',
-    client_id: process.env.REACT_APP_CLIENT_ID,
-    redirect_uri: REDIRECT_URI,
-    code: accessCode,
-  };
-
-  const queryStringBody = Object.keys(bodyData)
-    .map(key => encodeURIComponent(key) + '=' + encodeURI(bodyData[key]))
-    .join('&');
+  const navigate = useNavigate();
 
   useEffect(() => {
+    const bodyData = {
+      grant_type: 'authorization_code',
+      client_id: process.env.REACT_APP_CLIENT_ID,
+      redirect_uri: REDIRECT_URI,
+      code: accessCode,
+    };
+
+    const queryStringBody = Object.keys(bodyData)
+      .map(key => encodeURIComponent(key) + '=' + encodeURI(bodyData[key]))
+      .join('&');
+
     fetch('https://kauth.kakao.com/oauth/token', {
       method: 'POST',
       headers: {
@@ -44,7 +45,7 @@ const KakaoLogin = () => {
               }
             });
       });
-  }, []);
+  }, [navigate]);
 
   return <div>여기가 바로 로그인 리다이렉트 페이지입니다</div>;
 };

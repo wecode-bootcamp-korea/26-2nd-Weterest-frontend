@@ -2,15 +2,14 @@ import React, { useState, useEffect } from 'react';
 import { useNavigate, useLocation } from 'react-router-dom';
 import styled from 'styled-components';
 import PinDetail from './PinDetail/PinDetail';
-import WeterestGrid from '../../components/WeterestGrid/WeterestGrid';
+import WeterestGrid from '../../components/Grids/WeterestGrid';
 import { MdKeyboardBackspace } from 'react-icons/md';
-import { MockUp } from '../../Config';
+import { API } from '../../Config';
 
 const Detail = () => {
   const [pinDetailData, setPinDetailData] = useState();
   const navigate = useNavigate();
   const location = useLocation();
-
   const goBack = () => {
     navigate(-1);
   };
@@ -20,12 +19,12 @@ const Detail = () => {
   }, [location]);
 
   useEffect(() => {
-    fetch(MockUp.detail)
+    fetch(API.baseUrl + location.pathname)
       .then(res => res.json())
       .then(data => {
-        setPinDetailData(data.result);
+        setPinDetailData(data.message);
       });
-  }, []);
+  }, [location.pathname]);
 
   return (
     <>
@@ -37,7 +36,13 @@ const Detail = () => {
       </CloseUp>
       <GridContainer>
         <More>유사한 핀 더보기</More>
-        <WeterestGrid url={MockUp.main} />
+
+        {pinDetailData && (
+          <WeterestGrid
+            url={API.main}
+            query={`&tag_id=${pinDetailData.board_info.tag_id}`}
+          />
+        )}
       </GridContainer>
     </>
   );

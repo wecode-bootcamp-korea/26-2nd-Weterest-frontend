@@ -5,9 +5,10 @@ export const API = {
   detail: `${BASE_URL}/boards/`,
   main: `${BASE_URL}/boards`,
   upload: `${BASE_URL}/boards`,
+  getMyImage: `${BASE_URL}/boards/board/me`,
+  getMyPin: `${BASE_URL}/boards/pin`,
   baseUrl: `${BASE_URL}`,
-  token:
-    'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpZCI6NTJ9.l3OPSN-L-aIIOqKFUUVkaCYlctGcafF5SQkK3PSAHow',
+  token: localStorage.getItem('back_token'),
 };
 
 export const MockUp = {

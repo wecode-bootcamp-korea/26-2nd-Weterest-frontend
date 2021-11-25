@@ -3,11 +3,11 @@ import styled from 'styled-components';
 import UserProfileCircle from './CommentComps/UserProfileCircle';
 import DetailCommentList from './CommentComps/DetailCommentList';
 
-const DetailComment = () => {
+const DetailComment = ({ comments }) => {
   return (
     <CommentBox>
       <CommentTitle>댓글</CommentTitle>
-      <DetailCommentList />
+      <DetailCommentList comments={comments} />
       <CommentAction>
         <UserProfileCircle imgUrl="/images/image_a7.jpeg" />
         <CommentInput placeholder="Add a comment" />

@@ -21,6 +21,11 @@ const Nav = () => {
     }
   };
 
+  const goToMainPage = () => {
+    navigate(`/main`);
+    window.location.reload(false);
+  };
+
   const handleKakaoLogout = () => {
     alert('안전하게 로그아웃 되었습니다.');
     navigate('/');
@@ -29,10 +34,10 @@ const Nav = () => {
 
   return (
     <Navigator>
-      <Icon onClick={() => navigate('/main')}>
+      <Icon onClick={goToMainPage}>
         <FaPinterest style={{ color: 'red', width: '24px', height: '24px' }} />
       </Icon>
-      <Home onClick={() => navigate('/main')}>홈</Home>
+      <Home onClick={goToMainPage}>홈</Home>
       <SearchBoxContainer>
         <MdSearch style={buttonStyle} />
         <Search

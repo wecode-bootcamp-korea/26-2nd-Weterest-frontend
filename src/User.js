@@ -5,6 +5,7 @@ import Detail from './pages/Detail/Detail';
 import Main from './pages/Main/Main';
 import MyPage from './pages/MyPage/MyPage';
 import Upload from './pages/Upload/Upload';
+import Search from './pages/Search/Search';
 import KakaoLogin from './pages/Login/KakaoLogin';
 
 const User = () => {
@@ -14,9 +15,10 @@ const User = () => {
       <Routes>
         <Route path="/users/signin/kakao/callback" element={<KakaoLogin />} />
         <Route path="/main" element={<Main />} />
+        <Route path="/search" element={<Search />} />
         <Route path="/upload" element={<Upload />} />
         <Route path="/myPage" element={<MyPage />} />
-        <Route path="/detail" element={<Detail />} />
+        <Route path="/boards/:id" element={<Detail />} />
       </Routes>
     </>
   );

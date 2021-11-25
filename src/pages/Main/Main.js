@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
 import { useLocation } from 'react-router-dom';
 import styled from 'styled-components';
-import WeterestGrid from '../../components/WeterestGrid/WeterestGrid';
+import WeterestGrid from '../../components/Grids/WeterestGrid';
 import { API } from '../../Config';
 
 const Main = () => {
@@ -14,7 +14,7 @@ const Main = () => {
   return (
     <MainContainer>
       <HomeFeed>
-        <WeterestGrid url={`${API.main}`} />
+        <WeterestGrid url={API.main} />
       </HomeFeed>
     </MainContainer>
   );
