@@ -21,6 +21,12 @@ const Nav = () => {
     }
   };
 
+  const handleKakaoLogout = () => {
+    alert('안전하게 로그아웃 되었습니다.');
+    navigate('/');
+    localStorage.removeItem('back_token');
+  };
+
   return (
     <Navigator>
       <Icon onClick={() => navigate('/main')}>
@@ -46,7 +52,7 @@ const Nav = () => {
         <Icon onClick={() => navigate('/mypage')}>
           <CgProfile style={buttonStyle} />
         </Icon>
-        <Icon onClick={() => navigate('/')}>
+        <Icon onClick={handleKakaoLogout}>
           <MdLogout style={buttonStyle} />
         </Icon>
       </RightIcon>
