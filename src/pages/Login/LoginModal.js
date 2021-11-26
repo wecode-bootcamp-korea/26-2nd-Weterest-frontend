@@ -1,5 +1,4 @@
 import React from 'react';
-import { FaPinterest } from 'react-icons/fa';
 import { BsFacebook } from 'react-icons/bs';
 import styled from 'styled-components';
 import { KAKAO_AUTH_URL } from './OAuth';
@@ -24,7 +23,7 @@ const LoginContainer = ({
           changeBodyScroll();
         }}
       />
-      <FaPinterest style={{ color: 'red', fontSize: '40px' }} />
+      <WinterestLogo alt="윈터레스트 로고" src="/images/favicon.svg" />
       <Welcome>Winterest에 오신 것을 환영합니다</Welcome>
       <Form>
         <Input placeholder="이메일" />
@@ -82,6 +81,11 @@ const DeleteButton = styled.img`
   &:hover {
     background-color: rgb(204, 204, 204);
   }
+`;
+
+const WinterestLogo = styled.img`
+  width: 50px;
+  height: 50px;
 `;
 
 const Welcome = styled.span`

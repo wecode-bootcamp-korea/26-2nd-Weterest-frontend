@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { FaPinterest, FaBell, FaPlus, FaQuestion } from 'react-icons/fa';
+import { FaBell, FaPlus, FaQuestion } from 'react-icons/fa';
 import { MdSearch, MdMessage, MdLogout } from 'react-icons/md';
 import styled from 'styled-components';
 
@@ -34,7 +34,7 @@ const Nav = () => {
   return (
     <Navigator>
       <Icon onClick={goToMainPage}>
-        <FaPinterest style={{ color: 'red', width: '24px', height: '24px' }} />
+        <img alt="윈터레스트 로고" src="/images/favicon.svg" />
       </Icon>
       <Home onClick={goToMainPage}>홈</Home>
       <SearchBoxContainer>
@@ -90,6 +90,7 @@ const Navigator = styled.div`
 const Home = styled.button`
   min-width: 60px;
   height: 48px;
+  margin-left: 5px;
   border: none;
   border-radius: 24px;
   color: white;
@@ -102,7 +103,7 @@ const Home = styled.button`
 const SearchBoxContainer = styled.div`
   display: flex;
   align-items: center;
-  width: 84%;
+  width: 80%;
   height: 48px;
   margin: 0 8px;
   padding-left: 16px;
@@ -137,8 +138,14 @@ const Icon = styled.div`
   border-radius: 50%;
   background-color: white;
   cursor: pointer;
+
   :hover {
     background-color: #e2e2e2;
+  }
+
+  img {
+    width: 30px;
+    height: 30px;
   }
 `;
 
@@ -153,6 +160,7 @@ const Myprofile = styled.div`
   background-color: white;
   overflow: hidden;
   cursor: pointer;
+
   :hover {
     background-color: #e2e2e2;
   }
