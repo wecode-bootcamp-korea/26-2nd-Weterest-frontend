@@ -1,5 +1,4 @@
 import React, { useState, useEffect, useRef } from 'react';
-import { FaPinterest } from 'react-icons/fa';
 import styled, { css } from 'styled-components';
 import LoginModal from './LoginModal';
 import LoginIntroduce from './LoginIntroduce';
@@ -108,7 +107,7 @@ const EntryPage = () => {
       </WelcomeText>
       <LoginHeader ref={pageHeaderRef}>
         <Logo>
-          <FaPinterest style={{ color: 'red', fontSize: '30px' }} />
+          <WinterestLogo alt="윈터레스트 로고" src="/images/favicon.svg" />
           <Pinterest>Winterest</Pinterest>
         </Logo>
         <RigthContainer>
@@ -144,6 +143,12 @@ const flex = css`
   display: flex;
   align-items: center;
 `;
+
+const WinterestLogo = styled.img`
+  width: 30px;
+  height: 30px;
+`;
+
 const EntryPageContainer = styled.div``;
 
 const PageShadow = styled.div`
