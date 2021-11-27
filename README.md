@@ -14,27 +14,26 @@
 
 - 기간: 2021년 11월 15일 ~ 2021년 11월 26일(12일간)
 
-WINTEREST UI/UX 메인 서비스
+## 적용 기술
+
+- Front-end: JavaScript, React, React Hook, Redux, HTML, Styled-Component, AWS S3
+- Back-end: Django, Python, MySQL, jwt, bcrypt, AWS EC2, AWS RDS, AWS S3, Docker
+- 협업툴: Trello, Slack, Notion, Github, dbdiagram, postman
+
+## 개발방향
+
+WINTEREST UI/UX
 
 1. 카카오 소셜 로그인 서비스를 제공합니다.
 2. 사진들을 매직그리드 및 무한스크롤 기능을 통해 제공합니다.
 3. WINTEREST 회원이 본인 로컬에 있는 사진을 저장하면 마이페이지에 등록합니다.
 4. 원하는 카테고리를 검색하면 해당 사진들을 제공합니다.
 
-WINTEREST API 메인 서비스
+WINTEREST API
 
 1. WINTEREST에 게시된 Pin 리스트 및 상세정보를 제공합니다.
 2. WINTEREST 회원이 Pin 등록, Pin 저장, 댓글을 제공합니다.
 3. WINTEREST에 등록된 Pin을 제목, 태그별로 검색하여 관련된 Pin 리스트를 한눈에 볼 수 있습니다.
-
-- 사이트 링크 : https://www.pinterest.co.kr/
-
-
-## 적용 기술
-
-- Front-end: JavaScript, React, React Hook, Redux, HTML, Styled-Component, AWS S3
-- Back-end: Django, Python, MySQL, jwt, bcrypt, AWS EC2, AWS RDS, AWS S3, Docker
-- 협업툴: Trello, Slack, Notion, Github, dbdiagram, postman
 
 ## 구현 기능 및 개인 역할
 
