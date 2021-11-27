@@ -66,8 +66,7 @@ WINTEREST API 메인 서비스
 
 메인 페이지
 
-![_main_Winterest_2](https://user-images.githubusercontent.com/22067260/143684273-1523b8b8-045b-42e1-87bd-fa04f4536174.gif)
-
+![_main_Winterest_2](https://user-images.githubusercontent.com/22067260/143684435-6ef21dd7-b8e6-4cfb-9fa6-112c4c33393f.gif)
 
 상세 페이지
 
