@@ -2,7 +2,7 @@
 
 사진공유 플랫폼 [핀터레스트](https://www.pinterest.com/) 클로닝 프로젝트
 
-- 시연 영상 [링크](https://drive.google.com/file/d/1iQs4AqUM8KooI1IRBBUGhPjELsggv2hY/view?usp=sharing)
+- 시연 영상 [링크](https://drive.google.com/file/d/14e_OoFySbx13LLxvCWQv59yjRiKI1_GT/view?usp=sharing)
 - 배포한 웹사이트 [링크](http://wecode26winterestproject.s3-website.ap-northeast-2.amazonaws.com/)
 
 ## 👫 팀원
@@ -47,6 +47,7 @@ WINTEREST API
 - 메인, 상세, 검색 페이지에서 사용할 매직 그리드, 무한 스크롤
 - 마이 페이지에 사용한 일반 그리드 및 매직 그리드
 - Pin 저장 저장 취소 기능
+- 리덕스를 활용한 프로필 정보 전역화 및 다크모드 구현
 - AWS S3를 이용한 프론트 배포
 
 > **전창민**
@@ -90,11 +91,15 @@ WINTEREST API
 
 ![_main_Winterest_7](https://user-images.githubusercontent.com/22067260/143684094-4b96db50-b56e-4e86-954a-f4cc1fceb76e.gif)
 
+다크 모드 
+
+![winterest_darkmode](https://user-images.githubusercontent.com/22067260/143766048-f1133154-cdb4-4aa8-9382-54291f8310bf.gif)
+
 ## 소감 및 후기
 
 > **김유신** : 
 
-> **임연수** : 담백했습니다. 메인, 상세, 검색, 마이 페이지에서 공통적으로 활용할 매직 그리드 컴포넌트화를 진행하면서 다른 개발자들이 사용하기 편리한 코드가 무엇일까에 대한 생각을 많이 했습니다.  리베이스를 이용한 깃허브 활용을 할 수 있어서 유익했습니다.(리베이스를 잘못해서 2번 날려먹었지만 되살리는 법을 찾았습니다:)
+> **임연수** : 담백했습니다. 메인, 상세, 검색, 마이 페이지에서 공통적으로 활용할 매직 그리드 컴포넌트화를 진행하면서 다른 개발자들이 사용하기 편리한 코드가 무엇일까에 대한 생각을 많이 했습니다. 리베이스를 이용한 깃허브 활용을 할 수 있어서 유익했습니다.(리베이스를 잘못해서 2번 날려먹었지만 되살리는 법을 찾았습니다:)
 
 > **전창민** : 카카오 소셜로그인 기능구현을 할 수 있어서 좋았습니다. 그리고 팀원들 모두 각자 맡은 부분을 너무 잘해줘서 좋은 결과물을 만들 수 있었습니다!
 
