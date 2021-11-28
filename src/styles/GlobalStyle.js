@@ -15,6 +15,7 @@ const GlobalStyle = createGlobalStyle`
   }
 
   body {
+    background-color: ${props => props.theme.background};
     font-family: 'Noto Sans KR', Arial, Helvetica, sans-serif;
   }
 `;

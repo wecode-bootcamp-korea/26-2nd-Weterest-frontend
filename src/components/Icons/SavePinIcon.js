@@ -18,8 +18,14 @@ const SavePinIcon = ({ pinId }) => {
     })
       .then(res => res.json())
       .then(result => {
-        if (result.message === 'CREATE_SUCCESS') alert('핀이 저장되었습니다!');
-        if (result.message === 'NO_CONTENTS') alert('핀이 삭제되었습니다!');
+        switch (result.message) {
+          case 'CREATE_SUCCESS':
+            return alert('핀이 저장되었습니다!');
+          case 'NO_CONTENTS':
+            return alert('핀이 삭제되었습니다!');
+          default:
+            return alert('에러!');
+        }
       });
   };
 

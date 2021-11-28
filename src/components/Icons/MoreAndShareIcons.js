@@ -23,10 +23,11 @@ const Icons = styled.div`
 
   .WesterIcon {
     display: inline-block;
-    cursor: pointer;
     padding: 10px;
     border-radius: 50%;
-    background-color: rgba(255, 255, 255, 0.95);
+    background-color: ${props => props.theme.background};
+    color: ${props => props.theme.icon};
+    cursor: pointer;
 
     &.share {
       margin-left: 5px;

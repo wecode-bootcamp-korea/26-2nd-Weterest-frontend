@@ -86,7 +86,7 @@ const ActionBar = styled.div`
   width: 480px;
   padding-left: 20px;
   border-bottom-right-radius: 30px;
-  background-color: white;
+  background-color: ${props => props.theme.background};
   z-index: 4;
 `;
 

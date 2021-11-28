@@ -1,7 +1,9 @@
 import React, { useState } from 'react';
+import { useSelector, useDispatch } from 'react-redux';
+import { toggleDarkTheme } from '../../redux/darkmode';
 import { useNavigate } from 'react-router-dom';
 import { FaBell, FaPlus, FaQuestion } from 'react-icons/fa';
-import { MdSearch, MdMessage, MdLogout } from 'react-icons/md';
+import { MdSearch, MdLogout, MdWbSunny, MdStarOutline } from 'react-icons/md';
 import styled from 'styled-components';
 
 const buttonStyle = { color: 'grey', width: '24px', height: '24px' };
@@ -9,8 +11,10 @@ const edgeButtonStyle = { width: '20px', height: '20px' };
 
 const Nav = () => {
   const [keyword, setKeyword] = useState('');
-
   const navigate = useNavigate();
+  const userMockUpInfo = useSelector(state => state.userInfo.userMockUpInfo);
+  const isDarkTheme = useSelector(state => state.darkMode.isDarkMode);
+  const dispatch = useDispatch();
 
   const goToSearchPage = e => {
     if (e.key === 'Enter' && keyword) {
@@ -31,6 +35,10 @@ const Nav = () => {
     localStorage.removeItem('back_token');
   };
 
+  const toggleDarkMode = () => {
+    dispatch(toggleDarkTheme());
+  };
+
   return (
     <Navigator>
       <Icon onClick={goToMainPage}>
@@ -47,14 +55,18 @@ const Nav = () => {
         />
       </SearchBoxContainer>
       <RightIcon>
+        <Icon onClick={toggleDarkMode}>
+          {isDarkTheme ? (
+            <MdWbSunny style={buttonStyle} />
+          ) : (
+            <MdStarOutline style={buttonStyle} />
+          )}
+        </Icon>
         <Icon>
           <FaBell style={buttonStyle} />
         </Icon>
-        <Icon>
-          <MdMessage style={buttonStyle} />
-        </Icon>
         <Myprofile onClick={() => navigate('/mypage')}>
-          <ProfileImg alt="myprofile" src="/images/myprofile.jpeg" />
+          <ProfileImg alt="myprofile" src={userMockUpInfo.imgUrl} />
         </Myprofile>
         <Icon onClick={handleKakaoLogout}>
           <MdLogout style={buttonStyle} />
@@ -82,8 +94,8 @@ const Navigator = styled.div`
   width: 100%;
   height: 80px;
   padding: 4px 16px;
-  background-color: white;
-  box-shadow: 0 0 1px lightgrey;
+  background-color: ${props => props.theme.background};
+  box-shadow: 0 0 1px ${props => props.theme.borderLine};
   z-index: 2000;
 `;
 
@@ -93,8 +105,8 @@ const Home = styled.button`
   margin-left: 5px;
   border: none;
   border-radius: 24px;
-  color: white;
-  background-color: black;
+  color: ${props => props.theme.fontColorInverted};
+  background-color: ${props => props.theme.backgroundInverted};
   font-family: ${props => props.theme.fontContent};
   font-size: 16px;
   cursor: pointer;
@@ -108,9 +120,11 @@ const SearchBoxContainer = styled.div`
   margin: 0 8px;
   padding-left: 16px;
   border-radius: 24px;
-  background-color: rgba(225, 225, 225, 0.6);
+  color: ${props => props.theme.fontColor};
+  background-color: ${props => props.theme.searchBar};
+
   :hover {
-    background-color: #e2e2e2;
+    background-color: #e9e9e9;
   }
 `;
 
@@ -136,7 +150,6 @@ const Icon = styled.div`
   height: 48px;
   border: none;
   border-radius: 50%;
-  background-color: white;
   cursor: pointer;
 
   :hover {
@@ -157,7 +170,6 @@ const Myprofile = styled.div`
   height: 48px;
   border-radius: 50%;
   border: none;
-  background-color: white;
   overflow: hidden;
   cursor: pointer;
 
@@ -190,8 +202,10 @@ const Upload = styled.div`
   margin-bottom: 10px;
   padding: 4px;
   border-radius: 50%;
-  box-shadow: 0 0 10px lightgrey;
+  color: ${props => props.theme.icon};
+  box-shadow: ${props => props.theme.shadow};
   cursor: pointer;
+
   :hover {
     background-color: #e2e2e2;
   }

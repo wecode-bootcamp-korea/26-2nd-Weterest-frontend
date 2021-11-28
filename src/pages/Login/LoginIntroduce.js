@@ -49,7 +49,7 @@ const TEXTS = [
   '정원가꾸기 아이디어를 찾아보세요',
 ];
 
-const TEXTS_COLOR = ['red', 'blue', 'pink', 'orange'];
+const TEXTS_COLOR = ['#e60023', 'blue', 'pink', 'orange'];
 
 const ORDER = [0, 1, 2, 3];
 const Introduce = styled.div`
@@ -60,6 +60,7 @@ const Introduce = styled.div`
 const Next = styled.div`
   font-size: 60px;
   font-weight: bolder;
+  color: ${props => props.theme.fontColor};
 `;
 
 const IntroduceLooking = styled.div`

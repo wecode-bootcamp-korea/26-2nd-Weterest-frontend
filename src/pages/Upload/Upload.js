@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { useSelector } from 'react-redux';
 import styled from 'styled-components';
 import { MdUpload } from 'react-icons/md';
 import { API } from '../../Config';
@@ -8,6 +9,7 @@ const Upload = () => {
   const [title, setTitle] = useState('');
   const [intro, setIntro] = useState('');
   const [renderUrl, setRenderUrl] = useState('');
+  const userMockUpInfo = useSelector(state => state.userInfo.userMockUpInfo);
 
   const uploadMyImage = e => {
     setImgFile(e.target.files[0]);
@@ -46,11 +48,12 @@ const Upload = () => {
   return (
     <Main>
       <Wrap>
-        <Create>핀 만들기</Create>
         <Inner>
           <Top>
             <Delete onClick={() => deleteMyImage()}>삭제</Delete>
-            <Save onClick={saveImg}>저장</Save>
+            <Save disabled={true} onClick={saveImg}>
+              저장
+            </Save>
           </Top>
           <Mid>
             <LeftMid>
@@ -93,8 +96,8 @@ const Upload = () => {
                 value={title}
               />
               <User>
-                <Myprofile alt="myprofile" src="images/myprofile.jpeg" />
-                <UserName>창민 전</UserName>
+                <Myprofile alt="myprofile" src={userMockUpInfo.imgUrl} />
+                <UserName>{userMockUpInfo.name}</UserName>
               </User>
               <Intro
                 onChange={e => setIntro(e.target.value)}
@@ -122,28 +125,20 @@ const Main = styled.div`
   justify-content: center;
   align-items: center;
   padding: 28px;
-  background-color: #efefef;
+  background-color: ${props => props.theme.background};
 `;
 
 const Wrap = styled.div`
   width: 880px;
-  background-color: #efefef;
-`;
-
-const Create = styled.div`
-  display: flex;
-  align-items: center;
-  height: 100px;
-  padding: 20px 8px;
-  background-color: #efefef;
-  font-weight: 600;
+  margin-top: 60px;
 `;
 
 const Inner = styled.div`
   height: 650px;
   padding: 40px;
-  background-color: #ffffff;
   border-radius: 8px;
+  background-color: ${props => props.theme.background};
+  box-shadow: ${props => props.theme.shadow};
 `;
 
 const Top = styled.div`
@@ -178,10 +173,10 @@ const Save = styled.button`
   height: 40px;
   border: none;
   border-radius: 8px;
-  background-color: rgb(230, 0, 35);
-  color: white;
+  background-color: #efefef;
+  color: grey;
   font-size: 16px;
-  cursor: pointer;
+  cursor: default;
 `;
 
 const Mid = styled.div`
@@ -227,6 +222,8 @@ const UploadInner = styled.div`
   justify-content: center;
   align-items: center;
   width: 100%;
+  background-color: ${props => props.theme.searchBar};
+  color: ${props => props.theme.deepGrey};
 `;
 
 const UploadInnerBottom = styled.div`
@@ -255,6 +252,7 @@ const Title = styled.input`
   padding-bottom: 10px;
   border: none;
   border-bottom: 1px solid lightgrey;
+  background-color: ${props => props.theme.background};
   outline: none;
   font-size: 36px;
   font-weight: 600;
@@ -267,6 +265,8 @@ const User = styled.div`
   top: 30%;
   width: 388px;
   height: 48px;
+  color: ${props => props.theme.fontColor};
+  background-color: ${props => props.theme.background};
 `;
 
 const Myprofile = styled.img`
@@ -288,6 +288,7 @@ const Intro = styled.input`
   padding-bottom: 5px;
   border: none;
   border-bottom: 1px solid lightgrey;
+  background-color: ${props => props.theme.background};
   outline: none;
   font-size: 16px;
 `;
@@ -300,6 +301,7 @@ const Landing = styled.input`
   padding-bottom: 5px;
   border: none;
   border-bottom: 1px solid lightgrey;
+  background-color: ${props => props.theme.background};
   outline: none;
   font-size: 18px;
 `;

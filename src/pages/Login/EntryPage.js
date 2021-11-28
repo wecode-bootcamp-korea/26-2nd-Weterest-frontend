@@ -126,7 +126,9 @@ const EntryPage = () => {
             >
               로그인
             </LoginButton>
-            <SignUpButton type="button">가입하기</SignUpButton>
+            <SignUpButton disabled={true} type="button">
+              가입하기
+            </SignUpButton>
           </Forms>
         </RigthContainer>
       </LoginHeader>
@@ -156,7 +158,7 @@ const PageShadow = styled.div`
   display: ${props => (props.isLoginModalOpened ? 'block' : 'none')};
   width: 100%;
   height: 1607px;
-  background-color: black;
+  background-color: ${props => props.theme.background};
   opacity: ${props => (props.isLoginModalOpened ? 0.5 : 0)};
 `;
 
@@ -168,6 +170,7 @@ const DownButton = styled.img`
   bottom: 30px;
   width: 50px;
   height: 50px;
+  color: ${props => props.theme.white};
   transform: translateX(15px);
   cursor: pointer;
 `;
@@ -199,7 +202,7 @@ const Logo = styled.div`
 
 const Pinterest = styled.span`
   margin-left: 5px;
-  color: red;
+  color: ${props => props.theme.red};
   font-weight: bolder;
   font-size: 20px;
 `;
@@ -211,6 +214,7 @@ const RigthContainer = styled.div`
 const Introduces = styled.div`
   ${flex}
   margin-right: 50px;
+  color: ${props => props.theme.fontColor};
 `;
 
 const Introduce = styled.span`
@@ -230,7 +234,7 @@ const Forms = styled.form`
 
 const LoginButton = styled.button`
   padding: 5px;
-  background-color: red;
+  background-color: ${props => props.theme.red};
   color: white;
   border: none;
   border-radius: 15px;
@@ -245,11 +249,12 @@ const LoginButton = styled.button`
 
 const SignUpButton = styled(LoginButton)`
   margin-left: 20px;
-  background-color: rgb(239, 239, 239);
-  color: black;
+  background-color: rgba(239, 239, 239, 0.5);
+  color: lightgray;
+  cursor: default;
 
   &:hover {
-    background-color: rgb(226, 226, 226);
+    background-color: rgba(239, 239, 239, 0.5);
   }
 `;
 

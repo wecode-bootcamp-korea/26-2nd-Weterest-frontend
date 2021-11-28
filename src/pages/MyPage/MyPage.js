@@ -1,41 +1,32 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
+import { useSelector } from 'react-redux';
 import PinnedBoardGrid from '../../components/Grids/PinnedBoardGrid';
 import MyImageGrid from '../../components/Grids/MyImageGrid';
 import styled from 'styled-components';
 import { API } from '../../Config';
 
 const Mypage = () => {
-  const [userInfo, setUserInfo] = useState({});
-
-  useEffect(() => {
-    fetch('/data/mypageinfo.json')
-      .then(res => res.json())
-      .then(data => {
-        setUserInfo(data);
-      });
-  }, []);
+  const userMockUpInfo = useSelector(state => state.userInfo.userMockUpInfo);
 
   return (
     <>
       <MyPageInfo>
-        {userInfo && (
-          <>
-            <ProfileImg src={userInfo.imgurl} alt="profile" />
-            <Name>{userInfo.name}</Name>
-            <EmailInfo>
-              @cckdals222
-              <p style={{ marginTop: '10px' }}>
-                팔로잉 {userInfo.followNumber}명
-              </p>
-            </EmailInfo>
-            <ButtonBox>
-              <GrayButton type="button">공유</GrayButton>
-              <GrayButton type="button" right="right">
-                프로필 수정
-              </GrayButton>
-            </ButtonBox>
-          </>
-        )}
+        <>
+          <ProfileImg src={userMockUpInfo.imgUrl} alt="profile" />
+          <Name>{userMockUpInfo.name}</Name>
+          <EmailInfo>
+            @cckdals222
+            <p style={{ marginTop: '10px' }}>
+              팔로잉 {userMockUpInfo.followNumber}명
+            </p>
+          </EmailInfo>
+          <ButtonBox>
+            <GrayButton type="button">공유</GrayButton>
+            <GrayButton type="button" right="right">
+              프로필 수정
+            </GrayButton>
+          </ButtonBox>
+        </>
       </MyPageInfo>
       <MyPageGridContainer>
         <GirdTitle>내가 업로드한 이미지</GirdTitle>
@@ -56,6 +47,7 @@ const MyPageInfo = styled.div`
   flex-direction: column;
   align-items: center;
   padding-top: 100px;
+  color: ${props => props.theme.fontColor};
 `;
 
 const ProfileImg = styled.img`
@@ -100,8 +92,8 @@ const GrayButton = styled.button`
 const MyPageGridContainer = styled.main`
   position: relative;
   top: 60px;
-  /* height: 100%; */
   padding-bottom: 20px;
+  color: ${props => props.theme.fontColor};
 `;
 
 const GirdTitle = styled.div`
