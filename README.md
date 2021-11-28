@@ -39,8 +39,9 @@ WINTEREST API
 
 > **김유신**
 
-- 네비게이션 레이아웃 및 검색 기능 구현
-- 업로드 페이지 레이아웃 및 업로드한 그림 미리보기 구현
+- useNavgate()와 query string을 활용한 검색 기능 구현
+- URL.createObjectURL()을 이용한 upload file 미리보기 구현
+- formData를 이용하여 업로드 데이터 전송
 
 > **임연수**
 
