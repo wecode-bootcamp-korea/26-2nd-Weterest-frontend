@@ -1,16 +1,17 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import { ThemeProvider } from 'styled-components';
+import { Provider } from 'react-redux';
 import GlobalStyle from './styles/GlobalStyle';
 import Routers from './Routers';
-import theme from './styles/theme';
+import DarkThemeProvider from './styles/DarkThemeProvider';
+import store from './store';
 
 ReactDOM.render(
-  <>
-    <GlobalStyle />
-    <ThemeProvider theme={theme}>
+  <Provider store={store}>
+    <DarkThemeProvider>
+      <GlobalStyle />
       <Routers />
-    </ThemeProvider>
-  </>,
+    </DarkThemeProvider>
+  </Provider>,
   document.getElementById('root')
 );

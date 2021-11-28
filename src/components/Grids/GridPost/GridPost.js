@@ -139,8 +139,8 @@ const Source = styled.div`
   padding: 14px;
   width: 120px;
   border-radius: 28px;
-  background-color: ${props => props.theme.white};
-  color: ${props => props.theme.black};
+  background-color: ${props => props.theme.background};
+  color: ${props => props.theme.fontColor};
   font-family: ${props => props.theme.fontContent};
   font-size: 0.8rem;
 

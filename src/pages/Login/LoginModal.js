@@ -26,9 +26,13 @@ const LoginContainer = ({
       <WinterestLogo alt="윈터레스트 로고" src="/images/favicon.svg" />
       <Welcome>Winterest에 오신 것을 환영합니다</Welcome>
       <Form>
-        <Input placeholder="이메일" />
-        <Input placeholder="비밀번호" />
-        <InputAge placeholder="나이" isPageScrolledDown={isPageScrolledDown} />
+        <Input disabled={true} placeholder="이메일" />
+        <Input disabled={true} placeholder="비밀번호" />
+        <InputAge
+          disabled={true}
+          placeholder="나이"
+          isPageScrolledDown={isPageScrolledDown}
+        />
         <FindPassword>비밀번호를 잊으셨나요?</FindPassword>
         <LoginButton disabled>로그인</LoginButton>
         <OrText>또는</OrText>
@@ -39,7 +43,7 @@ const LoginContainer = ({
         <LoginLink href={KAKAO_AUTH_URL}>
           <KakaoLogin type="button">Kakao로 계속하기</KakaoLogin>
         </LoginLink>
-        <KakaoLogin type="button">로그아웃</KakaoLogin>
+        <KakaoLogout type="button">로그아웃</KakaoLogout>
       </Form>
       <ServiceInfo>
         계속 진행하면 Pinterest 서비스 약관에 동의하고 개인정보 보호정책을
@@ -120,11 +124,6 @@ const InputAge = styled(Input)`
 
 const FindPassword = styled.span`
   margin-bottom: 20px;
-  cursor: pointer;
-
-  &:hover {
-    text-decoration: underline;
-  }
 `;
 
 const LoginButton = styled.button`
@@ -132,11 +131,11 @@ const LoginButton = styled.button`
   padding: 7px 0;
   border-radius: 15px;
   border: none;
-  background-color: red;
-  color: white;
+  background-color: ${props => props.theme.middleGrey};
+  color: rgba(255, 255, 255, 0.25);
   font-size: 20px;
   outline: none;
-  cursor: pointer;
+  cursor: default;
 `;
 
 const OrText = styled.span`
@@ -149,7 +148,7 @@ const FacebookLogin = styled(LoginButton)`
   align-items: center;
   margin-bottom: 10px;
   padding-left: 10px;
-  background-color: blue;
+  background-color: ${props => props.theme.middleGrey};
 `;
 
 const LoginLink = styled.a``;
@@ -158,6 +157,13 @@ const KakaoLogin = styled(LoginButton)`
   margin-bottom: 10px;
   background-color: #fee500;
   color: rgb(24, 22, 0);
+  cursor: pointer;
+`;
+
+const KakaoLogout = styled(LoginButton)`
+  margin-bottom: 10px;
+  background-color: ${props => props.theme.middleGrey};
+  color: rgba(255, 255, 255, 0.25);
 `;
 
 const ServiceInfo = styled.span`
