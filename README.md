@@ -2,7 +2,7 @@
 
 사진공유 플랫폼 [핀터레스트](https://www.pinterest.com/) 클로닝 프로젝트
 
-- 시연 영상 [링크](https://drive.google.com/file/d/14e_OoFySbx13LLxvCWQv59yjRiKI1_GT/view?usp=sharing)
+- 시연 영상 [링크](https://drive.google.com/file/d/1OeR-_FTH9cSdoDQzxY83fJlY1tcdrh7Q/view?usp=sharing)
 - 배포한 웹사이트 [링크](http://wecode26winterestproject.s3-website.ap-northeast-2.amazonaws.com/)
 
 ## 👫 팀원
@@ -97,7 +97,7 @@ WINTEREST API
 
 ## 소감 및 후기
 
-> **김유신** : 
+> **김유신** : 팀원들 모두 고생 많으셨고, 잘 해주셔서 감사했습니다. 배포까지 할 수 있어서 좋았습니다.
 
 > **임연수** : 담백했습니다. 메인, 상세, 검색, 마이 페이지에서 공통적으로 활용할 매직 그리드 컴포넌트화를 진행하면서 다른 개발자들이 사용하기 편리한 코드가 무엇일까에 대한 생각을 많이 했습니다. 리베이스를 이용한 깃허브 활용을 할 수 있어서 유익했습니다.(리베이스를 잘못해서 2번 날려먹었지만 되살리는 법을 찾았습니다:)
 
