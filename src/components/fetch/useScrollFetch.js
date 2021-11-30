@@ -2,22 +2,26 @@ import { useState, useEffect } from 'react';
 import { useLocation } from 'react-router-dom';
 import { API } from '../../Config';
 
-const LIMIT = 10;
+const LIMIT = 25;
 
-const giveRandomHeight = pins => {
+const setNewHeight = pins => {
   const result = pins.message.map(pin => {
-    pin.image_height += randomHeight();
+    if (pin.image_width === 1600 && pin.image_height === 900) {
+      pin.image_height += addRandomHeight();
+    }
+
     return pin;
   });
 
   return result;
 };
 
-const randomHeight = () => {
+const addRandomHeight = () => {
   const heightList = [100, 300, 600, 1200];
-  const newHeight = heightList[Math.floor(Math.random() * heightList.length)];
+  const randomHeight =
+    heightList[Math.floor(Math.random() * heightList.length)];
 
-  return newHeight;
+  return randomHeight;
 };
 
 const useScrollFetch = (url, page, query) => {
@@ -31,10 +35,10 @@ const useScrollFetch = (url, page, query) => {
   }, [location.pathname]);
 
   useEffect(() => {
-    infiniteScroll(page, url, query);
+    getImages(page, url, query);
   }, [page, url, query]);
 
-  const infiniteScroll = (page, url, query) => {
+  const getImages = (page, url, query) => {
     const pagenation = `?limit=${LIMIT}&offset=${LIMIT * page}`;
     const isQuery = query === undefined;
 
@@ -45,9 +49,9 @@ const useScrollFetch = (url, page, query) => {
       .then(pinsData => {
         setPins(prevPins => {
           if (prevPins === []) {
-            return giveRandomHeight(pinsData);
+            return setNewHeight(pinsData);
           } else {
-            return [...prevPins, ...giveRandomHeight(pinsData)];
+            return [...prevPins, ...setNewHeight(pinsData)];
           }
         });
         setLoading(false);

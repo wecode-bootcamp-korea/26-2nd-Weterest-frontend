@@ -1,8 +1,7 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import styled from 'styled-components';
-import MoreAndShareIcons from '../../Icons/MoreAndShareIcons';
-import SavePinIcon from '../../Icons/SavePinIcon';
+import HoverInfos from './HoverInfos/HoverInfos';
 import { POST_STYLE_DATA } from '../../../styles/StyleData';
 
 const MyImageGirdPost = ({ pins }) => {
@@ -10,14 +9,6 @@ const MyImageGirdPost = ({ pins }) => {
 
   const goToDetail = pinId => {
     navigate(`/boards/${pinId}`);
-  };
-
-  const trimText = text => {
-    const maxTextLength = 10;
-    if (text.length >= maxTextLength)
-      return `${text.slice(0, maxTextLength)}...`;
-
-    return text;
   };
 
   return (
@@ -28,18 +19,9 @@ const MyImageGirdPost = ({ pins }) => {
             <PostInner>
               <Content>
                 <ContentInner>
-                  <IconsGroup>
-                    <Icons>
-                      <SavePinPosition>
-                        <SavePinIcon pinId={pin.id} />
-                      </SavePinPosition>
-                      <MoreAndShareIconsPosition>
-                        <MoreAndShareIcons />
-                      </MoreAndShareIconsPosition>
-                      <Source>{pin.title && trimText(pin.title)}</Source>
-                    </Icons>
-                    <IconsOverlay />
-                  </IconsGroup>
+                  <ContentHover>
+                    <HoverInfos pinId={pin.id} title={pin.title} />
+                  </ContentHover>
                   <Image src={pin.image_url} />
                   <ImageSkeleton backgroundColor={pin.point_color} />
                 </ContentInner>
@@ -64,52 +46,7 @@ const PostInner = styled.div`
   padding: 0 8px 16px 8px;
 `;
 
-const Icons = styled.div`
-  position: absolute;
-  width: 100%;
-  height: 100%;
-  z-index: 4;
-`;
-
-const SavePinPosition = styled.div`
-  position: absolute;
-  right: 16px;
-  top: 16px;
-`;
-
-const MoreAndShareIconsPosition = styled.div`
-  position: absolute;
-  right: 16px;
-  bottom: 14px;
-  transform-origin: right bottom;
-  transform: scale(0.75);
-`;
-
-const Source = styled.div`
-  position: absolute;
-  left: 12px;
-  bottom: 14px;
-  padding: 14px;
-  width: 120px;
-  border-radius: 28px;
-  background-color: ${props => props.theme.white};
-  color: ${props => props.theme.black};
-  font-family: ${props => props.theme.fontContent};
-  font-size: 0.8rem;
-
-  &:hover {
-    background-color: rgba(235, 235, 235, 1);
-  }
-`;
-
-const IconsOverlay = styled.div`
-  height: 100%;
-
-  background-color: ${props => props.theme.black};
-  opacity: 0.3;
-`;
-
-const IconsGroup = styled.div`
+const ContentHover = styled.div`
   display: none;
   position: absolute;
   width: 100%;
@@ -124,7 +61,7 @@ const Content = styled.div`
   overflow: hidden;
   cursor: pointer;
 
-  &:hover ${IconsGroup} {
+  &:hover ${ContentHover} {
     display: block;
   }
 `;

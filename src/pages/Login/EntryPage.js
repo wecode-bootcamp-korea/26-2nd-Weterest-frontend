@@ -158,7 +158,7 @@ const PageShadow = styled.div`
   display: ${props => (props.isLoginModalOpened ? 'block' : 'none')};
   width: 100%;
   height: 1607px;
-  background-color: ${props => props.theme.background};
+  background-color: black;
   opacity: ${props => (props.isLoginModalOpened ? 0.5 : 0)};
 `;
 

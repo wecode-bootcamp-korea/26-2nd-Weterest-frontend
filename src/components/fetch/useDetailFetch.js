@@ -1,27 +1,22 @@
 import { useState, useEffect } from 'react';
 import { API } from '../../Config';
 
-const useMyImageFetch = url => {
-  const [pins, setPins] = useState([]);
+const useDetailFetch = url => {
+  const [pinDetailData, setPinDetailData] = useState();
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(false);
 
   useEffect(() => {
-    getImages(url);
+    getDetailData(url);
   }, [url]);
 
-  const getImages = url => {
+  const getDetailData = url => {
     fetch(url, {
       headers: { Authorization: API.token },
     })
       .then(res => res.json())
-      .then(pinsData => {
-        if (pinsData.message === 'DOSE_NOT_EXIST_CREATE_BOARD') {
-          setPins([]);
-        } else {
-          setPins(pinsData.message);
-        }
-
+      .then(data => {
+        setPinDetailData(data.message);
         setLoading(false);
       })
       .catch(error => {
@@ -29,7 +24,8 @@ const useMyImageFetch = url => {
         setLoading(false);
       });
   };
-  return { pins, loading, error };
+
+  return { pinDetailData, loading, error };
 };
 
-export default useMyImageFetch;
+export default useDetailFetch;

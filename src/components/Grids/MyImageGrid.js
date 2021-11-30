@@ -1,9 +1,9 @@
 import React from 'react';
 import styled from 'styled-components';
+import IntroPost from './GridPost/IntroPost';
 import MyImageGridPost from './GridPost/MyImageGirdPost';
 import useMyImageFetch from '../fetch/useMyImageFetch';
 import FetchInform from '../fetch/FetchInform';
-import IntroPost from './GridPost/IntroPost';
 
 const MyImageGrid = ({ url }) => {
   const { pins, loading, error } = useMyImageFetch(url);

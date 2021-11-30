@@ -2,20 +2,21 @@ import { useState, useEffect } from 'react';
 import { useLocation } from 'react-router-dom';
 import { API } from '../../Config';
 
-const giveRandomHeight = pins => {
+const setNewHeight = pins => {
   const result = pins.map(pin => {
-    pin.image_height += randomHeight();
+    pin.image_height += addRandomHeight();
     return pin;
   });
 
   return result;
 };
 
-const randomHeight = () => {
+const addRandomHeight = () => {
   const heightList = [100, 300, 600, 1200];
-  const newHeight = heightList[Math.floor(Math.random() * heightList.length)];
+  const randomHeight =
+    heightList[Math.floor(Math.random() * heightList.length)];
 
-  return newHeight;
+  return randomHeight;
 };
 
 const usePinnedBoardFetch = url => {
@@ -29,10 +30,10 @@ const usePinnedBoardFetch = url => {
   }, [location.pathname]);
 
   useEffect(() => {
-    weGridFetch(url);
+    getImages(url);
   }, [url]);
 
-  const weGridFetch = url => {
+  const getImages = url => {
     fetch(url, {
       headers: { Authorization: API.token },
     })
@@ -41,13 +42,7 @@ const usePinnedBoardFetch = url => {
         if (pinsData.message === 'No Pin') {
           setPins([]);
         } else {
-          setPins(prevPins => {
-            if (prevPins === []) {
-              return giveRandomHeight(pinsData.pined_boards);
-            } else {
-              return [...prevPins, ...giveRandomHeight(pinsData.pined_boards)];
-            }
-          });
+          setPins(setNewHeight(pinsData.pined_boards));
         }
 
         setLoading(false);
