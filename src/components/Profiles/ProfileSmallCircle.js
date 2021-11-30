@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 
-const UserProfileCircle = ({ username, imgUrl }) => {
+const ProfileSmallCircle = ({ username, imgUrl }) => {
   return (
     <ProfileWrap pickRandomColor={pickRandomColor(colorList)}>
       {imgUrl ? (
@@ -13,7 +13,7 @@ const UserProfileCircle = ({ username, imgUrl }) => {
   );
 };
 
-export default UserProfileCircle;
+export default ProfileSmallCircle;
 
 const colorList = [
   '#66C4FF',

@@ -4,10 +4,11 @@ import GridPost from './GridPost/GridPost';
 import useScrollFetch from '../fetch/useScrollFetch';
 import FetchInform from '../fetch/FetchInform';
 
-const WeterestGrid = ({ url, query }) => {
+const WinterestGrid = ({ url, query }) => {
   const [page, setPage] = useState(0);
   const { pins, loading, error } = useScrollFetch(url, page, query);
   const gridLoader = useRef(null);
+
   const handleObserver = useCallback(entries => {
     const target = entries[0];
     if (target.isIntersecting) {
@@ -21,6 +22,7 @@ const WeterestGrid = ({ url, query }) => {
       rootMargin: '20px',
       threshold: 0,
     };
+
     const observer = new IntersectionObserver(handleObserver, option);
     if (gridLoader.current) observer.observe(gridLoader.current);
   }, [handleObserver]);
@@ -56,4 +58,4 @@ const Grid = styled.div`
   margin-left: auto;
 `;
 
-export default WeterestGrid;
+export default WinterestGrid;

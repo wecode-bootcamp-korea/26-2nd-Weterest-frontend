@@ -1,13 +1,13 @@
 import React from 'react';
 import styled from 'styled-components';
-import FeaturedUser from './DetailFeaturedUser';
-import DetailComment from './DetailComment/DetailComment';
+import FeaturedUser from './Info/FeaturedUser';
+import CommentBox from './CommentBox/CommentBox';
 import MoreAndShareIcons from '../../../components/Icons/MoreAndShareIcons';
 import SavePinIcon from '../../../components/Icons/SavePinIcon';
 
-const PinDetail = ({ pin }) => {
+const PinCard = ({ pin }) => {
   return (
-    <PinCard onClick={e => e.stopPropagation()}>
+    <Card onClick={e => e.stopPropagation()}>
       <PinWrap>
         <Pin pickRandomHeight={pickRandomHeight(heightList)}>
           <Image src={pin.board_info.board_image_url} />
@@ -24,14 +24,14 @@ const PinDetail = ({ pin }) => {
           <Description>{pin.board_info.description}</Description>
           <FeaturedUser username={pin.board_info.username} />
 
-          <DetailComment comments={pin.comments} />
+          <CommentBox comments={pin.comments} />
         </PinInfo>
       </PinInfoWrap>
-    </PinCard>
+    </Card>
   );
 };
 
-export default PinDetail;
+export default PinCard;
 
 const heightList = [300, 400, 500, 600];
 
@@ -39,7 +39,7 @@ const pickRandomHeight = list => {
   return list[Math.floor(Math.random() * list.length)];
 };
 
-const PinCard = styled.div`
+const Card = styled.div`
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 20px;

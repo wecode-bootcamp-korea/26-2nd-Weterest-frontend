@@ -1,13 +1,13 @@
 import React from 'react';
 import styled from 'styled-components';
-import UserProfileCircle from './DetailComment/CommentComps/UserProfileCircle';
+import ProfileSmallCircle from '../../../../components/Profiles/ProfileSmallCircle';
 
 const FeaturedUser = ({ username }) => {
   return (
     <UserInfo>
       <div className="userMiniInfo">
         <UserCard>
-          <UserProfileCircle username={username} imgUrl="" />
+          <ProfileSmallCircle username={username} imgUrl="" />
           <UserSum>
             <span className="name">{username}</span>
             <br />
@@ -53,6 +53,4 @@ const FollowButton = styled.div`
   font-size: 15px;
   font-weight: 700;
   color: white;
-
-  cursor: pointer;
 `;

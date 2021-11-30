@@ -1,24 +1,24 @@
 import React from 'react';
 import styled from 'styled-components';
-import UserProfileCircle from './CommentComps/UserProfileCircle';
-import DetailCommentList from './CommentComps/DetailCommentList';
+import CommentList from './components/CommentList';
+import ProfileSmallCircle from '../../../../components/Profiles/ProfileSmallCircle';
 
-const DetailComment = ({ comments }) => {
+const CommentBox = ({ comments }) => {
   return (
-    <CommentBox>
+    <Comments>
       <CommentTitle>댓글</CommentTitle>
-      <DetailCommentList comments={comments} />
+      <CommentList comments={comments} />
       <CommentAction>
-        <UserProfileCircle imgUrl="/images/image_a7.jpeg" />
-        <CommentInput placeholder="Add a comment" />
+        <ProfileSmallCircle imgUrl="/images/image_a7.jpeg" />
+        <CommentInput disabled={true} placeholder="댓글 달기" />
       </CommentAction>
-    </CommentBox>
+    </Comments>
   );
 };
 
-export default DetailComment;
+export default CommentBox;
 
-const CommentBox = styled.div`
+const Comments = styled.div`
   margin-top: 40px;
 `;
 

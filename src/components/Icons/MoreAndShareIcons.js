@@ -5,10 +5,10 @@ import { MdOutlineIosShare, MdMoreHoriz } from 'react-icons/md';
 const MoreAndShareIcons = () => {
   return (
     <Icons>
-      <span className="WesterIcon more">
+      <span className="icon more">
         <MdMoreHoriz />
       </span>
-      <span className="WesterIcon share">
+      <span className="icon share">
         <MdOutlineIosShare />
       </span>
     </Icons>
@@ -21,13 +21,13 @@ const Icons = styled.div`
   padding-left: 12px;
   font-size: 2rem;
 
-  .WesterIcon {
+  .icon {
     display: inline-block;
     padding: 10px;
     border-radius: 50%;
     background-color: ${props => props.theme.background};
     color: ${props => props.theme.icon};
-    cursor: pointer;
+    cursor: default;
 
     &.share {
       margin-left: 5px;

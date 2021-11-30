@@ -62,7 +62,7 @@ const Nav = () => {
             <MdStarOutline style={buttonStyle} />
           )}
         </Icon>
-        <Icon>
+        <Icon className="bell">
           <FaBell style={buttonStyle} />
         </Icon>
         <Myprofile onClick={() => navigate('/mypage')}>
@@ -151,6 +151,10 @@ const Icon = styled.div`
   border: none;
   border-radius: 50%;
   cursor: pointer;
+
+  &.bell {
+    cursor: default;
+  }
 
   :hover {
     background-color: #e2e2e2;

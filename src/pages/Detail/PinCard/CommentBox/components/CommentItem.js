@@ -1,6 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
-import UserProfileCircle from './UserProfileCircle';
+import UserProfileCircle from '../../../../../components/Profiles/ProfileSmallCircle';
 import {
   MdThumbUp,
   MdOutlineFavorite,

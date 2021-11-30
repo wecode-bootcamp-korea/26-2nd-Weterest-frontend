@@ -1,30 +1,29 @@
-import React, { useState, useEffect } from 'react';
+import React, { useEffect } from 'react';
 import { useNavigate, useLocation } from 'react-router-dom';
 import styled from 'styled-components';
-import PinDetail from './PinDetail/PinDetail';
-import WeterestGrid from '../../components/Grids/WeterestGrid';
+import PinCard from './PinCard/PinCard';
+import useDetailFetch from '../../components/fetch/useDetailFetch';
+import WinterestGrid from '../../components/Grids/WinterestGrid';
+import FetchInform from '../../components/fetch/FetchInform';
 import { MdKeyboardBackspace } from 'react-icons/md';
 import { API } from '../../Config';
 
 const Detail = () => {
-  const [pinDetailData, setPinDetailData] = useState();
   const navigate = useNavigate();
   const location = useLocation();
+  const { pinDetailData, loading, error } = useDetailFetch(
+    API.baseUrl + location.pathname
+  );
+  const query = `&tag_id=${pinDetailData && pinDetailData.board_info.tag_id}`;
+
   const goBack = () => {
-    navigate(-1);
+    navigate('/main');
+    window.location.reload(false);
   };
 
   useEffect(() => {
     window.scrollTo(0, 0);
   }, [location]);
-
-  useEffect(() => {
-    fetch(API.baseUrl + location.pathname)
-      .then(res => res.json())
-      .then(data => {
-        setPinDetailData(data.message);
-      });
-  }, [location.pathname]);
 
   return (
     <>
@@ -32,17 +31,13 @@ const Detail = () => {
         <MdKeyboardBackspace />
       </GoBackIcon>
       <CloseUp onClick={goBack}>
-        {pinDetailData && <PinDetail pin={pinDetailData} />}
+        {pinDetailData && <PinCard pin={pinDetailData} />}
+        {loading && <FetchInform message="그리드 로딩 중" />}
+        {error && <FetchInform message="에러" />}
       </CloseUp>
       <GridContainer>
         <More>유사한 핀 더보기</More>
-
-        {pinDetailData && (
-          <WeterestGrid
-            url={API.main}
-            query={`&tag_id=${pinDetailData.board_info.tag_id}`}
-          />
-        )}
+        <WinterestGrid url={API.main} query={query} />
       </GridContainer>
     </>
   );

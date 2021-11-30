@@ -3,9 +3,9 @@ import styled from 'styled-components';
 import CommentFirstMent from './CommentFirstMent';
 import CommentItem from './CommentItem';
 
-const DetailCommentList = ({ comments }) => {
+const CommentList = ({ comments }) => {
   return (
-    <CommentList>
+    <List>
       {comments ? (
         comments.map(comment => (
           <CommentItem key={comment.id} comment={comment} />
@@ -13,13 +13,13 @@ const DetailCommentList = ({ comments }) => {
       ) : (
         <CommentFirstMent />
       )}
-    </CommentList>
+    </List>
   );
 };
 
-export default DetailCommentList;
+export default CommentList;
 
-const CommentList = styled.div`
+const List = styled.div`
   margin-top: 10px;
   padding: 12px 0;
 `;
